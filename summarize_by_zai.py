@@ -19,7 +19,7 @@ def get_summary_from_zai(client, title, abstract):
     
     try:
         response = client.chat.completions.create(
-            model="glm-4",  # 或者使用 glm-4.6
+            model="glm-4.5-flash",  # 免费模型参考：https://docs.bigmodel.cn/cn/guide/models/free/
             messages=[
                 {
                     "role": "system",
@@ -30,6 +30,9 @@ def get_summary_from_zai(client, title, abstract):
                     "content": prompt
                 }
             ],
+            thinking={
+                "type": "enabled",    # 启用深度思考模式
+            },
             temperature=0.7
         )
         return response.choices[0].message.content
