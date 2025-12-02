@@ -151,7 +151,8 @@ def generate_paper_cards_html(df):
             <p style="font-size: 0.9em; color: #888;">
                 Category: {row['primary_category']} | 
                 <a href="{row['arxiv_url']}" target="_blank">arXiv Link</a> | 
-                <a href="{row['pdf_url']}" target="_blank">PDF</a>
+                <a href="{row['pdf_url']}" target="_blank">PDF</a> | 
+                <a href="{row['arxiv_url'].replace('arxiv', 'alphaxiv')}" target="_blank">alphaXiv</a>
             </p>
         </div>
         """

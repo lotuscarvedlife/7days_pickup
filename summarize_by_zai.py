@@ -6,9 +6,33 @@ from datetime import datetime, timedelta
 from zai import ZhipuAiClient
 from tqdm import tqdm
 
+# # --- 配置区域 ---
+# # 请在这里填入您的智谱AI API Key
+# API_KEY = ""
+# # --- 配置区域结束 ---
+
 # --- 配置区域 ---
-# 请在这里填入您的智谱AI API Key
-API_KEY = ""
+# 从文件读取API Key
+API_KEY_FILE = "zhipu_api_key.txt"
+
+def load_or_create_api_key():
+    """
+    从文件加载API Key，如果文件不存在则创建默认文件
+    """
+    if not os.path.exists(API_KEY_FILE):
+        # 创建默认的API Key文件
+        with open(API_KEY_FILE, 'w', encoding='utf-8') as f:
+            f.write("REPLACE_THIS_WITH_YOUR_API_KEY")
+        print(f"已创建 {API_KEY_FILE} 文件，请填写您的智谱AI API Key后重新运行程序。")
+        print("详情访问 https://www.bigmodel.cn/usercenter/proj-mgmt/apikeys")
+        return "REPLACE_THIS_WITH_YOUR_API_KEY"
+    else:
+        # 读取API Key
+        with open(API_KEY_FILE, 'r', encoding='utf-8') as f:
+            api_key = f.read().strip()
+        return api_key
+
+API_KEY = load_or_create_api_key()
 # --- 配置区域结束 ---
 
 def get_summary_from_zai(client, title, abstract):
@@ -124,8 +148,8 @@ def main():
     
     args = parser.parse_args()
     
-    if API_KEY == "YOUR_API_KEY":
-        print("错误：请在脚本中设置您的 ZhipuAiClient API_KEY。")
+    if API_KEY == "REPLACE_THIS_WITH_YOUR_API_KEY":
+        print("错误：请在 zhipu_api_key.txt 中设置您的 ZhipuAiClient API_KEY。详情访问 https://www.bigmodel.cn/usercenter/proj-mgmt/apikeys")
         exit()
 
     # 解析日期
