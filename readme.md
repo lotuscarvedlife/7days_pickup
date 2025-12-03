@@ -1,12 +1,16 @@
 ## `eess.AS` 七日拾遗
 
+### 更新
+
+- 20251203：重写 gradio 前端，让前端更加美观，原版前端为 `app.py`，重写的前端为 `app_enhanced.py`
+
 ### 简介
 
 - 自动爬取 arxiv eess.AS 类别下，向前推7个更新日的信息并进行汇总，提供对应的 arxiv 和 pdf 链接，并调用免费的 glm-4.5-Flash 进行中文总结，让你跟进学术前沿，并提供 alphaxiv 友情链接以供进一步了解。当然也可以下载对应 pdf 使用自己的 ai 模型进行总结。
 
 - 界面大致如下：
 
-  ![image-20251202212919451](readme.assets/image-20251202212919451.png)
+  ![image-20251203171829981](readme.assets/image-20251203171829981.png)
 
 ### 本地部署
 
@@ -36,7 +40,7 @@
 5. 运行！
 
    ```
-   python app.py
+   python app_enhanced.py
    ```
 
 ### 待完成
